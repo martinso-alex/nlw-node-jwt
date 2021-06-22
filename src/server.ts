@@ -1,7 +1,14 @@
-import express from 'express';
+import express from "express";
+import { router } from "./routes";
+
+import "reflect-metadata";
+import "./database";
+
 const app = express();
 
-app.get('/', (req, res) => res.json('bem-vindo à API'));
+app.use(express.json());
+
+app.use(router);
 
 const port = 3000;
 app.listen(port, () => console.log(`Server is running on port ${port}.`));
